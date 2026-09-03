@@ -1,6 +1,6 @@
 export default function Brands() {
     return (
-        <section className="">
+        <section className="w-full">
             <div className="w-full bg-black flex items-center justify-around">
                 <img src="/photos/ebay.png" alt="ebay" className="h-22" />
                 <img src="/photos/amazon.png" alt="amazon" className="h-22" />
