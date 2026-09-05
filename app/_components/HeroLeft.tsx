@@ -6,7 +6,7 @@ export default function HeroLeft() {
         console.log("Shop Now clicked!");
     }
     return (
-        <div className="flex flex-col justify-center px-16 pt-28 pb-12 w-[42%] shrink-0">
+        <div className="flex flex-col justify-center px-16 pb-12 w-[42%] shrink-0">
 
             {/* Headline */}
             <h1 className="text-8xl font-black text-black leading-tight tracking-tight">
