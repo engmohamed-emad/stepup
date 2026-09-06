@@ -6,10 +6,10 @@ export default function HeroLeft() {
         console.log("Shop Now clicked!");
     }
     return (
-        <div className="flex flex-col justify-center px-16 pb-12 w-[42%] shrink-0">
+        <div className="flex flex-col justify-center px-8 pt-28 pb-12 lg:px-16 lg:pt-0 w-full lg:w-[42%] lg:shrink-0 lg:min-h-screen">
 
             {/* Headline */}
-            <h1 className="text-8xl font-black text-black leading-tight tracking-tight">
+            <h1 className="text-5xl lg:text-8xl font-black text-black leading-tight tracking-tight">
                 Find Your
                 <br />
                 Sole Mate
@@ -18,13 +18,13 @@ export default function HeroLeft() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-lg mt-6 text-gray-700 max-w-md">
+            <p className="text-base lg:text-lg mt-6 text-gray-700 max-w-md">
                 Lorem Ipsum Dolor Sit Amet, Consectetur
                 <br />
                 Adipiscing Elit, Sed Do Eiusmod.
             </p>
-            <div className="mt-15">
-                {/* CTA Button — sharp corners, solid black, matching mockup */}
+            <div className="mt-8 lg:mt-15">
+                {/* CTA Button */}
                 <BlackButton text="Shop Now" handleClick={handleShopNowClick} />
             </div>
         </div>

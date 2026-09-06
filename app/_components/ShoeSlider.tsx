@@ -26,7 +26,7 @@ export default function CarouselSpacing() {
         <Carousel className="w-full">
             <CarouselContent className="-ml-1">
                 {images.map((image, index) => (
-                    <CarouselItem key={index} className="basis-1/2 pl-1 lg:basis-1/3">
+                    <CarouselItem key={index} className="basis-full pl-1 lg:basis-1/3">
                         <div className="p-1">
                             <CardContent className="flex aspect-square border-none items-center justify-center">
                                 <ShoeCard image={image} description={image} price={index + 1} />

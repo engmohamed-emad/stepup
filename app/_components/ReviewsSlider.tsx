@@ -1,5 +1,7 @@
+"use client";
 import { Carousel } from "@ark-ui/react/carousel";
 import ReviewCard from "./ReviewCard";
+import { useEffect, useState } from "react";
 
 const reviews = [
     { name: "Ali", review: "Good product, really happy with the quality!", rating: 5, image: "" },
@@ -7,19 +9,19 @@ const reviews = [
     { name: "Mohamed", review: "Great shoes, very comfortable.", rating: 4.5, image: "" },
     { name: "Sara", review: "Loved the design and fast delivery.", rating: 4, image: "" },
     { name: "Khaled", review: "Good product, really happy with the !", rating: 5, image: "" },
-
 ];
 
-// Split into groups of 2
+// Split into groups of given size
 function chunkArray<T>(arr: T[], size: number): T[][] {
     return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
         arr.slice(i * size, i * size + size)
     );
 }
 
-const slides = chunkArray(reviews, 2);
+const slidesMobile = chunkArray(reviews, 1); // 1 per slide on mobile
+const slidesDesktop = chunkArray(reviews, 2); // 2 per slide on desktop
 
-export default function ReviewsSlider() {
+function SliderBlock({ slides, showTwoPerSlide }: { slides: typeof slidesMobile; showTwoPerSlide: boolean }) {
     return (
         <Carousel.Root
             defaultPage={0}
@@ -27,14 +29,14 @@ export default function ReviewsSlider() {
             className="w-full max-w-4xl mx-auto"
         >
             <Carousel.ItemGroup className="min-h-40">
-                {slides.map((pair, index) => (
+                {slides.map((group, index) => (
                     <Carousel.Item
                         key={index}
                         index={index}
-                        className="flex gap-6 px-2-row"
+                        className="flex gap-6 px-2"
                     >
-                        {pair.map((review, i) => (
-                            <div key={i} className="flex-1">
+                        {group.map((review, i) => (
+                            <div key={i} className={showTwoPerSlide ? "flex-1" : "w-full"}>
                                 <ReviewCard
                                     image={review.image}
                                     name={review.name}
@@ -43,8 +45,8 @@ export default function ReviewsSlider() {
                                 />
                             </div>
                         ))}
-                        {/* If odd number of reviews, fill the empty slot */}
-                        {pair.length < 2 && <div className="flex-1" />}
+                        {/* Fill empty slot if odd number in desktop mode */}
+                        {showTwoPerSlide && group.length < 2 && <div className="flex-1" />}
                     </Carousel.Item>
                 ))}
             </Carousel.ItemGroup>
@@ -62,4 +64,21 @@ export default function ReviewsSlider() {
             </div>
         </Carousel.Root>
     );
+}
+
+export default function ReviewsSlider() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const mq = window.matchMedia("(max-width: 1023px)");
+        setIsMobile(mq.matches);
+        const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+        mq.addEventListener("change", handler);
+        return () => mq.removeEventListener("change", handler);
+    }, []);
+
+    if (isMobile) {
+        return <SliderBlock slides={slidesMobile} showTwoPerSlide={false} />;
+    }
+    return <SliderBlock slides={slidesDesktop} showTwoPerSlide={true} />;
 }
