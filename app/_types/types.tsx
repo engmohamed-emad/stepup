@@ -1,8 +1,21 @@
-export interface ProductCardProps {
-  image: string;
-  description: string;
+export interface Shoe {
+  id: string;
+  name: string;
+  img: string;
   price: number;
+  originalprice: number;
+  section: string;
+  createdAt: string;
 }
+
+export interface ProductCardProps {
+  id: string;
+  name: string;
+  img: string;
+  price: number;
+  originalprice: number;
+}
+  
 
 export interface ArrowButtonProps {
   onArrowClick?: () => void;
@@ -16,11 +29,7 @@ export interface BlackButtonProps {
   size?: "small" | "large";
 }
 
-export interface ShoeCard2Props {
-  image: string;
-  name: string;
-  price: number;
-  originalPrice: number;
+export interface ShoeCard2Props extends Shoe {
   isNew?: boolean;
   onArrowClick?: () => void;
 }
@@ -30,4 +39,9 @@ export interface ReviewCardProps {
   name: string;
   rating: number; // 0–5, supports .5 steps
   review: string;
+}
+
+export interface NavigationsProps {
+  mobile?: boolean;
+  onLinkClick?: () => void;
 }

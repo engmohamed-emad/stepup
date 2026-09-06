@@ -1,10 +1,9 @@
-import Hero from './_components/Hero';
-import Brands from './_components/Brands';
-import Trending from './_components/Trending';
-import BestSelling from './_components/BestSelling';
-import Banner from './_components/Banner';
-import Reviews from './_components/Reviews';
-import Footer from './_components/Footer';
+import Hero from '@/app/_components/Hero/Hero';
+import Brands from '@/app/_components/Brands/Brands';
+import Trending from '@/app/_components/Trending/Trending';
+import BestSelling from '@/app/_components/BestSelling/BestSelling';
+import Banner from '@/app/_components/Banner/Banner';
+import Reviews from '@/app/_components/Reviews/Reviews';
 
 export default function Home() {
   return (

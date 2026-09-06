@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
-import Header from "./_components/Header";
-import Footer from "./_components/Footer";
+import Header from "@/app/_components/Header/Header";
+import Footer from "@/app/_components/Footer/Footer";
+import QueryProvider from "@/app/_components/Generic/QueryProvider";
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -18,9 +19,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en" className={cn("font-sans", geist.variable)}
     >
       <body className="min-h-full flex flex-col">
-        <Header />
-        {children}
-        <Footer />
+        <QueryProvider>
+          <Header />
+          {children}
+          <Footer />
+        </QueryProvider>
       </body>
     </html>
   );

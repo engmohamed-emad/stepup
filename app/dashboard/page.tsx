@@ -1,7 +1,7 @@
 "use client";
 import { PlusIcon } from "@/app/_icons/icons";
-import TableContent from "@/app/_components/Table";
-import Filter from "@/app/_components/Filter";
+import TableContent from "@/app/_components/Generic/Table";
+import Filter from "@/app/_components/Generic/Filter";
 
 export default function Dashboard() {
     const items = ["All", "Man", "Woman", "Boys", "Girls"];
