@@ -1,17 +1,19 @@
 "use client";
 import type { ProductCardProps } from "@/app/_types/types";
 import ArrowButton from "@/app/_components/Generic/ArrowButton";
+import { useRouter } from "next/navigation";
 
-function onArrowClick() {
-  console.log("Arrow clicked!");
-}
 export default function ProductCard({
- id,
- name,
- img,
- price,
- originalprice,
+  id,
+  name,
+  img,
+  price,
+  originalprice,
 }: ProductCardProps) {
+  const router = useRouter();
+  function onArrowClick() {
+    router.push(`/shoe/${id}`);
+  }
   return (
     <div className="w-full rounded-[20px] bg-[#D9D9D9]/15 p-4 border border-[#D9D9D9] shadow-sm">
       {/* Image area */}

@@ -32,13 +32,12 @@ export default function Modal({ isOpen, onClose, title, children }: ModalProps) 
     if (!isOpen) return null;
 
     return (
-        /* Backdrop */
         <div
             className="fixed inset-0 z-50 flex items-center justify-center"
             style={{ backgroundColor: 'rgba(0,0,0,0.45)' }}
             onClick={onClose}
         >
-            {/* Panel */}
+
             <div
                 className="
                     relative bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4

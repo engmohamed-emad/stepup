@@ -1,9 +1,10 @@
 "use client";
 import BlackButton from "@/app/_components/Generic/BlackButton";
-
+import { useRouter } from "next/navigation";
 export default function HeroLeft() {
+    const router = useRouter();
     function handleShopNowClick() {
-        console.log("Shop Now clicked!");
+       router.push('/shop');
     }
     return (
         <div className="flex flex-col justify-center px-8 pt-28 pb-12 lg:px-16 lg:pt-0 w-full lg:w-[42%] lg:shrink-0 lg:min-h-screen">

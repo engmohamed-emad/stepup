@@ -5,9 +5,9 @@ export default function HeroRight() {
             {/* "ULTIMATE" — absolute, left side, behind the image (z-10) */}
             <span
                 className="absolute left-0 top-0 bottom-0
-                           text-white font-black leading-25 tracking-widest
+                           text-white font-black leading-24 tracking-widest
                            select-none pointer-events-none z-0
-                           text-[clamp(28px,6vw,130px)] [writing-mode:vertical-rl] rotate-180 indent-2 lg:indent-4"
+                           text-[clamp(33px,7vw,155px)] [writing-mode:vertical-rl] rotate-180 indent-2 lg:indent-4"
             >
                 ULTIMATE
             </span>

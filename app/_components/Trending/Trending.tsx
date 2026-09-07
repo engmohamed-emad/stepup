@@ -1,9 +1,11 @@
 'use client';
 import BlackButton from "@/app/_components/Generic/BlackButton";
 import ShoeSlider from "@/app/_components/Trending/ShoeSlider";
+import { useRouter } from "next/navigation";
 export default function Trending() {
+    const router = useRouter();
     function handleClick() {
-        console.log("Explore Now clicked!");
+        router.push('/shop');
     }
     return (
         <div className="flex flex-col lg:flex-row mx-4 lg:mx-16">

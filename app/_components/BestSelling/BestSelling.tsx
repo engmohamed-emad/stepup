@@ -12,9 +12,7 @@ export default function BestSelling() {
         newChosen[index] = true;
         setChosen(newChosen);
     }
-    function onArrowClick() {
-        console.log("Arrow clicked!");
-    }
+
 
     const { data: products, isLoading, error } = useAllShoes();
     return (
@@ -36,7 +34,8 @@ export default function BestSelling() {
                 ) : error ? (
                     <p className="text-center text-red-500">Error: {error.message}</p>
                 ) : (
-                    products?.slice(0, 8).map((product: Shoe) => (
+                    products?.map((product: Shoe) => (
+                       ( (product.section==='Man' && chosen[0]) || (product.section==='Woman' && chosen[1]) || (product.section==='Boys' && chosen[2]) || (product.section==='Girls' && chosen[3])) && (
                         <ShoeCard2
                             key={product.id}
                             id={product.id}
@@ -46,9 +45,9 @@ export default function BestSelling() {
                             originalprice={product.originalprice}
                             section={product.section}
                             createdAt={product.createdAt}
-                            onArrowClick={onArrowClick}
                         />
                     ))
+                )
                 )}
             </div>
 

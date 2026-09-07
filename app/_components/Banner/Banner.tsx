@@ -8,11 +8,15 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
-
+import { useRouter } from "next/navigation";
 
 
 export default function Banner() {
     const { data: products, isLoading, error } = useAllShoes();
+    const router = useRouter();
+    function handleThumbnailClick(productId: string) {
+        router.push(`/shoe/${productId}`);
+    }
     return (
         <section className="mx-4 lg:mx-32 my-10 lg:my-15">
             <div className="relative w-full rounded-3xl bg-[#FD8B92] overflow-hidden px-6 py-8 lg:px-12 lg:py-10">
@@ -42,7 +46,7 @@ export default function Banner() {
                     <button
                         type="button"
                         className="mt-1 bg-white text-[#FD8B92] font-bold text-base lg:text-lg px-8 lg:px-10 py-2.5 rounded-sm hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
-                        onClick={() => console.log("Explore clicked")}
+                        onClick={() => router.push('/shop')}
                     >
                         Explore
                     </button>
@@ -59,7 +63,7 @@ export default function Banner() {
                                         key={index}
                                         className="basis-1/3 pl-2"
                                     >
-                                        <div className="bg-white/30 rounded-xl p-1.5 flex items-center justify-center aspect-square">
+                                        <div onClick={() => handleThumbnailClick(product.id)} className="bg-white/30 rounded-xl p-1.5 flex items-center justify-center aspect-square">
                                             <img
                                                 src={product.img}
                                                 alt={product.name}
