@@ -1,10 +1,14 @@
 "use client";
+import { useState } from "react";
 import { PlusIcon } from "@/app/_icons/icons";
 import TableContent from "@/app/_components/Generic/Table";
 import Filter from "@/app/_components/Generic/Filter";
+import Modal from "@/app/_components/Generic/Modal";
+import ShoeForm from "@/app/_components/Generic/Form";
 
 export default function Dashboard() {
     const items = ["All", "Man", "Woman", "Boys", "Girls"];
+    const [addOpen, setAddOpen] = useState(false);
 
     return (
         <div className="min-h-screen bg-gray-50 pt-28 pb-16 px-8">
@@ -20,6 +24,7 @@ export default function Dashboard() {
             {/* Toolbar: Add Product + Filter */}
             <div className="flex items-center gap-4 mb-6">
                 <button
+                    onClick={() => setAddOpen(true)}
                     className="
                         flex items-center gap-2 px-5 py-2.5 rounded-xl
                         bg-black text-white font-semibold text-sm
@@ -36,6 +41,15 @@ export default function Dashboard() {
 
             {/* Table */}
             <TableContent />
+
+            {/* Add Product Modal */}
+            <Modal
+                isOpen={addOpen}
+                onClose={() => setAddOpen(false)}
+                title="Add New Shoe"
+            >
+                <ShoeForm onSuccess={() => setAddOpen(false)} />
+            </Modal>
         </div>
     );
 }

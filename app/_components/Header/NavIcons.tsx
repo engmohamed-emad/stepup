@@ -8,9 +8,9 @@ export default function NavIcons() {
             <button type="button" className="cursor-pointer">
                 <CartIcon className="h-6 w-6 text-gray-600" />
             </button>
-            <button type="button" className="cursor-pointer">
+            {/* <button type="button" className="cursor-pointer">
                 <DashboardIcon className="h-6 w-6 text-gray-600" />
-            </button>
+            </button> */}
         </div>
 
     );
