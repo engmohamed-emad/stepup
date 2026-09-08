@@ -11,6 +11,7 @@
   "dependencies": {
     "@ark-ui/react": "^5.39.1",
     "@base-ui/react": "^1.7.0",
+    "@supabase/supabase-js": "^2.109.0",
     "@tanstack/react-query": "^5.102.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

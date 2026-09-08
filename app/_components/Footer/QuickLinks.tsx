@@ -5,7 +5,7 @@ export default function QuickLinks() {
             {["Home", "Shop", "Category", "Contact", "Privacy"].map((link) => (
                 <a
                     key={link}
-                    href={`/${link.toLowerCase()}`}
+                    href={link==='Home' ? '/' : `/${link.toLowerCase()}`}
                     className="text-sm text-white hover:text-white transition-colors duration-200"
                 >
                     {link}
