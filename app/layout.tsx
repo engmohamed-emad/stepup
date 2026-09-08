@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Header from "@/app/_components/Header/Header";
 import Footer from "@/app/_components/Footer/Footer";
 import QueryProvider from "@/app/_components/Generic/QueryProvider";
+import { Toaster } from "sonner";
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Header />
           {children}
           <Footer />
+          <Toaster position="bottom-right" richColors duration={3000} />
         </QueryProvider>
       </body>
     </html>

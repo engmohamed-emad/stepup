@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useDeleteShoe } from '@/app/_hooks/shoesQuery';
 import Modal from '@/app/_components/Generic/Modal';
+import { toast } from 'sonner';
 
 interface DeleteButtonProps {
     shoeId: string;
@@ -14,7 +15,10 @@ export default function DeleteButton({ shoeId }: DeleteButtonProps) {
 
     const handleDelete = () => {
         deleteMutation.mutate(shoeId, {
-            onSuccess: () => setIsOpen(false),
+            onSuccess: () => {
+                setIsOpen(false);
+                toast.error('Shoe deleted 🗑️');
+            },
         });
     };
 

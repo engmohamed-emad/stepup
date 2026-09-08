@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, FormEvent, ChangeEvent } from 'react';
 import { Shoe } from '@/app/_types/types';
 import { useCreateShoe, useUpdateShoe } from '@/app/_hooks/shoesQuery';
+import { toast } from 'sonner';
 
 const SECTIONS = ['Man', 'Woman', 'Boys', 'Girls'];
 
@@ -60,8 +61,10 @@ export default function ShoeForm({ shoe, onSuccess }: ShoeFormProps) {
 
         if (isEdit) {
             await updateMutation.mutateAsync(payload);
+            toast.success('Shoe updated successfully ✅');
         } else {
             await createMutation.mutateAsync({ ...payload, createdAt: new Date().toISOString() });
+            toast.success('Shoe added successfully 🎉');
         }
 
         onSuccess();
