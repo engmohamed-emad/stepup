@@ -18,16 +18,26 @@ export default function Banner() {
         router.push(`/shoe/${productId}`);
     }
     return (
-        <section className="mx-4 lg:mx-32 my-10 lg:my-15">
-            <div className="relative w-full rounded-3xl bg-[#FD8B92] overflow-hidden px-6 py-8 lg:px-12 lg:py-10">
+        <section className="mx-4 lg:mx-32 my-10 lg:my-15 overflow-visible">
+            <div className="relative w-full rounded-3xl bg-[#FD8B92] overflow-visible px-6 py-8 lg:px-12 lg:py-10">
 
                 {/* Watermark text */}
                 <span className="absolute inset-0 z-0 flex items-center justify-center text-[22vw] font-black text-white/20 select-none leading-none pointer-events-none whitespace-nowrap overflow-hidden">
                     StepUP
                 </span>
 
+                {/* Banner person image - left side, overflowing top, hidden on mobile */}
+                <div className="hidden lg:block absolute left-0 bottom-0 z-10 pointer-events-none ml-20" style={{ height: '130%' }}>
+                    <img
+                        src="/photos/banner.png"
+                        alt="Banner Person"
+                        className="h-full w-auto object-contain object-bottom"
+                    />
+                </div>
+
                 {/* Content */}
-                <div className="relative z-20 flex flex-col items-start lg:items-end gap-4">
+
+                <div className="relative z-20 flex flex-col items-start lg:items-end gap-4 mr-20">
 
                     {/* Headline */}
                     <div className="text-left">
@@ -40,16 +50,17 @@ export default function Banner() {
                             Lorem ipsum dolor sit amet, consectetur
                             adipiscing elit, sed do.
                         </p>
+                        {/* Explore button */}
+                        <button
+                            type="button"
+                            className="mt-1 bg-white text-[#FD8B92] font-bold text-base lg:text-lg px-8 lg:px-10 py-2.5 rounded-sm hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
+                            onClick={() => router.push('/shop')}
+                        >
+                            Explore
+                        </button>
                     </div>
 
-                    {/* Explore button */}
-                    <button
-                        type="button"
-                        className="mt-1 bg-white text-[#FD8B92] font-bold text-base lg:text-lg px-8 lg:px-10 py-2.5 rounded-sm hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
-                        onClick={() => router.push('/shop')}
-                    >
-                        Explore
-                    </button>
+
 
                     {/* Shoe thumbnail carousel */}
                     <div className="w-full max-w-[288px] mt-2 lg:mx-10">
@@ -73,12 +84,13 @@ export default function Banner() {
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious className="" />
-                            <CarouselNext className="" />
+                            <CarouselPrevious className="hidden lg:flex" />
+                            <CarouselNext className="hidden lg:flex" />
                         </Carousel>
                     </div>
                 </div>
             </div>
-        </section>
+
+        </section >
     );
 }
